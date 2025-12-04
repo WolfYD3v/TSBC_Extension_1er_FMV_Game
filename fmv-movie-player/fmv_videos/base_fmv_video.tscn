@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh27ess4jitii"]
+
+[ext_resource type="Script" uid="uid://u2nppu2nu28k" path="res://fmv_videos/BaseFMVVideo.cs" id="1_28wa7"]
+[ext_resource type="Theme" uid="uid://ddoixelwc0680" path="res://assets/themes/main_theme.tres" id="1_cxdkr"]
+[ext_resource type="VideoStream" uid="uid://vlgl267l6agy" path="res://fmv_videos/sequences/s501_murder_scene.ogv" id="2_w118x"]
+[ext_resource type="AudioStream" uid="uid://bv30pw6gjutq5" path="res://assets/sfx/button_hovered.wav" id="4_vxg71"]
+[ext_resource type="AudioStream" uid="uid://bnrnkvvmdm543" path="res://assets/sfx/button_clicked.wav" id="5_q1ldl"]
+
+[node name="BaseFMVVideo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cxdkr")
+script = ExtResource("1_28wa7")
+V_NextSceneAuto = false
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_w118x")
+autoplay = true
+expand = true
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 50.0
+offset_bottom = 149.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+text = "TEST BUTTON
+- Skip the first video played- 
+- Current video does not switch to the next one automatically after ended -
+
+(usage for a Rail Shooter typed gameplay)
+(for the testing sake go to the next video will deal damages (-25.0f), and will add an item in the inventory. Which is useless btw no puzzle gameplay has been added yet...)"
+autowrap_mode = 3
+
+[node name="ButtonHoveredAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vxg71")
+volume_db = -10.0
+
+[node name="ButtonClickedAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q1ldl")
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="F_VideoSceneFinished"]
+[connection signal="mouse_entered" from="Buttons/Button" to="." method="F_OnButtonMouseEntered"]
+[connection signal="pressed" from="Buttons/Button" to="." method="F_NextVideoScene"]

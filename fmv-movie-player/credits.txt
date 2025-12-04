@@ -1,0 +1,13 @@
+SHADERS:
+- "VHS and CTR Monitor Effect" BY A7meD : https://godotshaders.com/shader/vhs-and-crt-monitor-effect-2/
+- "Moving Radial Color Gradient" BY 2clawzz : https://godotshaders.com/shader/moving-radial-color-gradient/
+
+FONTS:
+- Game font: https://online-fonts.com/fonts/sf-atarian-system
+- "Terminal" font: https://fonts.google.com/specimen/Pixelify+Sans
+
+SFXs:
+- Made on jsfxr ( https://sfxr.me/ )
+
+VIDEOS:
+- All edited by me

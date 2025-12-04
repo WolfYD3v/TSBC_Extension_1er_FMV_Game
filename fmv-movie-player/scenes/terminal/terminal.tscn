@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3t13radnclmi"]
+
+[ext_resource type="Theme" uid="uid://ddoixelwc0680" path="res://assets/themes/main_theme.tres" id="1_2y7k8"]
+[ext_resource type="Script" uid="uid://bd2xg27n2oery" path="res://scenes/terminal/Terminal.cs" id="1_k5ahw"]
+
+[node name="Terminal" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2y7k8")
+script = ExtResource("1_k5ahw")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14406255, 0.14406255, 0.14406249, 1)
+
+[node name="TerminalRichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+scroll_following = true

@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://w1c40e1kwjhi"]
+
+[ext_resource type="Shader" uid="uid://cw78nhpwgqqiq" path="res://assets/shaders/moving_gradient.gdshader" id="1_ql7vw"]
+
+[resource]
+shader = ExtResource("1_ql7vw")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/color1 = Color(9.62615e-08, 0.31171528, 0.2514529, 1)
+shader_parameter/color2 = Color(1, 0.50563556, 0.64552486, 1)
+shader_parameter/x_target = 1.0
+shader_parameter/y_target = 0.0

@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ddoixelwc0680"]
+
+[ext_resource type="FontFile" uid="uid://phc0ud2wxu0t" path="res://assets/fonts/SF Atarian System/SF Atarian System Extended Bold.ttf" id="1_3f3va"]
+[ext_resource type="FontFile" uid="uid://djq3yrlbcexp4" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_lxams"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f3va"]
+bg_color = Color(0.41981313, 0.41981313, 0.41981304, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxams"]
+bg_color = Color(0.65834, 0.65834, 0.6583398, 1)
+
+[resource]
+default_font = ExtResource("1_3f3va")
+default_font_size = 35
+HBoxContainer/constants/separation = 15
+Label/colors/font_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+Label/colors/font_outline_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.78431374)
+Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = 5
+Label/constants/shadow_offset_y = 5
+ProgressBar/colors/font_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+ProgressBar/colors/font_outline_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+ProgressBar/constants/outline_size = 10
+ProgressBar/font_sizes/font_size = 30
+ProgressBar/styles/background = SubResource("StyleBoxFlat_3f3va")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_lxams")
+RichTextLabel/font_sizes/bold_font_size = 25
+RichTextLabel/font_sizes/bold_italics_font_size = 25
+RichTextLabel/font_sizes/italics_font_size = 25
+RichTextLabel/font_sizes/mono_font_size = 25
+RichTextLabel/font_sizes/normal_font_size = 25
+RichTextLabel/fonts/bold_font = ExtResource("1_lxams")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_lxams")
+RichTextLabel/fonts/italics_font = ExtResource("1_lxams")
+RichTextLabel/fonts/mono_font = ExtResource("1_lxams")
+RichTextLabel/fonts/normal_font = ExtResource("1_lxams")
+VBoxContainer/constants/separation = 15

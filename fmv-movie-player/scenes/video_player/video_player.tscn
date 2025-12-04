@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=3 uid="uid://sr3qiads0nr7"]
+
+[ext_resource type="Theme" uid="uid://ddoixelwc0680" path="res://assets/themes/main_theme.tres" id="1_ah7o2"]
+[ext_resource type="Script" uid="uid://b4g3af3amxn4s" path="res://scenes/video_player/VideoPlayer.cs" id="1_bq8iy"]
+[ext_resource type="PackedScene" uid="uid://c1xas1yni1wl6" path="res://scenes/video_player/interface/interface.tscn" id="3_ah7o2"]
+[ext_resource type="PackedScene" uid="uid://br0mrcnha8v68" path="res://fmv_videos/collection/content_warning_video.tscn" id="4_bfjeg"]
+[ext_resource type="Material" uid="uid://dgjbgo1phy0sn" path="res://assets/shaders/vhs_ctr_tv_shader_material.tres" id="4_mp8bw"]
+[ext_resource type="Texture2D" uid="uid://bkd056x6va3mv" path="res://assets/images/border.png" id="4_pwqwn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3m7jb"]
+viewport_path = NodePath("VideoPlayer/SubViewportContainer/SubViewport")
+
+[sub_resource type="Animation" id="Animation_bfjeg"]
+resource_name = "BlackFading"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFading:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3m7jb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFading:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04jcw"]
+_data = {
+&"BlackFading": SubResource("Animation_bfjeg"),
+&"RESET": SubResource("Animation_3m7jb")
+}
+
+[node name="FMV" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ah7o2")
+script = ExtResource("1_bq8iy")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6034802, 0.47092134, 5.7756904e-07, 1)
+
+[node name="Interface" parent="." instance=ExtResource("3_ah7o2")]
+layout_mode = 1
+
+[node name="VideoPlayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -372.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ah7o2")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VideoPlayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="VideoPlayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(780, 533)
+render_target_update_mode = 4
+
+[node name="Background" type="ColorRect" parent="VideoPlayer/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
+[node name="FMVVideoLocation" type="Control" parent="VideoPlayer/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContentWarningFMVVideo" parent="VideoPlayer/SubViewportContainer/SubViewport/FMVVideoLocation" instance=ExtResource("4_bfjeg")]
+layout_mode = 1
+
+[node name="TVShader" type="TextureRect" parent="VideoPlayer/SubViewportContainer"]
+material = ExtResource("4_mp8bw")
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_3m7jb")
+
+[node name="Border" type="TextureRect" parent="VideoPlayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_pwqwn")
+
+[node name="BlackFading" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -904.99994
+offset_top = -458.99997
+offset_right = -904.99994
+offset_bottom = -458.99997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_04jcw")
+}
+
+[connection signal="S_NextVideoScene" from="VideoPlayer/SubViewportContainer/SubViewport/FMVVideoLocation/ContentWarningFMVVideo" to="." method="F_SetFMVVideo"]

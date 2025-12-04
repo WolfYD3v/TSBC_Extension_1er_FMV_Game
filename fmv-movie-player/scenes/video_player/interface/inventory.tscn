@@ -1,0 +1,268 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs27yth4ncqov"]
+
+[ext_resource type="Script" uid="uid://4thu2fjn1dbq" path="res://scenes/video_player/interface/Inventory.cs" id="1_skovt"]
+[ext_resource type="Shader" uid="uid://64nlwdt4s141" path="res://assets/shaders/vhs_ctr_tv_shader.gdshader" id="2_skovt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awxmc"]
+shader = ExtResource("2_skovt")
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1280, 960)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eqlir"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_skovt")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(350, 167)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.7480482, 0.7843815, 1)
+
+[node name="NODES" type="VBoxContainer" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="InventoryLabel" type="Label" parent="SubViewportContainer/SubViewport/NODES"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(7.70092e-07, 0.37180477, 0.4022768, 1)
+theme_override_colors/font_shadow_color = Color(1.92523e-07, 0.29452267, 0.31189457, 0.627451)
+theme_override_colors/font_outline_color = Color(0, 0.210114, 0.29810157, 1)
+theme_override_font_sizes/font_size = 20
+text = "Inventaire:"
+horizontal_alignment = 1
+
+[node name="InventorySlots" type="GridContainer" parent="SubViewportContainer/SubViewport/NODES"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 6
+
+[node name="1" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="2" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="3" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="4" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="5" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="6" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="7" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="8" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="9" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="10" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="11" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="12" type="ColorRect" parent="SubViewportContainer/SubViewport/NODES/InventorySlots"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0.3057918, 0.3313524, 1)
+
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/NODES/InventorySlots/12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+expand_icon = true
+
+[node name="TVShader" type="TextureRect" parent="SubViewportContainer"]
+material = SubResource("ShaderMaterial_awxmc")
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_eqlir")
+expand_mode = 1
+stretch_mode = 2

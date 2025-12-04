@@ -1,0 +1,250 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1xas1yni1wl6"]
+
+[ext_resource type="Texture2D" uid="uid://br6pmc8h0in33" path="res://icon.svg" id="1_otavp"]
+[ext_resource type="Theme" uid="uid://ddoixelwc0680" path="res://assets/themes/main_theme.tres" id="1_p0k3s"]
+[ext_resource type="Script" uid="uid://bunft3h7203xx" path="res://scenes/video_player/interface/Interface.cs" id="2_mx11l"]
+[ext_resource type="Texture2D" uid="uid://bkd056x6va3mv" path="res://assets/images/border.png" id="3_3g2s5"]
+[ext_resource type="Shader" uid="uid://64nlwdt4s141" path="res://assets/shaders/vhs_ctr_tv_shader.gdshader" id="3_84bp4"]
+[ext_resource type="PackedScene" uid="uid://cs27yth4ncqov" path="res://scenes/video_player/interface/inventory.tscn" id="5_awxmc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84bp4"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awxmc"]
+bg_color = Color(0.7002263, 0.5276979, 3.85046e-07, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awxmc"]
+shader = ExtResource("3_84bp4")
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1280, 960)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_84bp4"]
+viewport_path = NodePath("Sections/RightSection/Status/SubViewportContainer/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ms6d0"]
+viewport_path = NodePath("Sections/RightSection/Status3/SubViewportContainer/SubViewport")
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_p0k3s")
+script = ExtResource("2_mx11l")
+
+[node name="Sections" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightSection" type="VBoxContainer" parent="Sections"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="Status" type="Control" parent="Sections/RightSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Sections/RightSection/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Sections/RightSection/Status/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(350, 167)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Sections/RightSection/Status/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7556078, 0.7515138, 0, 1)
+
+[node name="NODES" type="VBoxContainer" parent="Sections/RightSection/Status/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Sections/RightSection/Status/SubViewportContainer/SubViewport/NODES"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.70980394, 0.49803922, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.33333334, 0.23921569, 0, 0.627451)
+theme_override_colors/font_outline_color = Color(0.33333334, 0.23921569, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Santé:"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="Sections/RightSection/Status/SubViewportContainer/SubViewport/NODES"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7087268, 0.496278, 0, 1)
+theme_override_colors/font_outline_color = Color(0.3342074, 0.23755246, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_84bp4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_awxmc")
+value = 100.0
+
+[node name="TVShader" type="TextureRect" parent="Sections/RightSection/Status/SubViewportContainer"]
+material = SubResource("ShaderMaterial_awxmc")
+layout_mode = 2
+texture = SubResource("ViewportTexture_84bp4")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Border" type="TextureRect" parent="Sections/RightSection/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3g2s5")
+expand_mode = 3
+
+[node name="Inventory" parent="Sections/RightSection" instance=ExtResource("5_awxmc")]
+layout_mode = 2
+
+[node name="Border" type="TextureRect" parent="Sections/RightSection/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3g2s5")
+expand_mode = 3
+
+[node name="Status3" type="Control" parent="Sections/RightSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Sections/RightSection/Status3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Sections/RightSection/Status3/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(350, 167)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Sections/RightSection/Status3/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.57662743, 0.65962964, 1)
+
+[node name="NODES" type="VBoxContainer" parent="Sections/RightSection/Status3/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="XXXLabel" type="Label" parent="Sections/RightSection/Status3/SubViewportContainer/SubViewport/NODES"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.69540226, 6.0741007e-05, 0.5588164, 1)
+theme_override_colors/font_shadow_color = Color(0.36168355, 1.9131974e-05, 0.29503176, 0.627451)
+theme_override_colors/font_outline_color = Color(0.37127978, 1.3019368e-05, 0.28738385, 1)
+text = "Autre info:"
+horizontal_alignment = 1
+
+[node name="TVShader" type="TextureRect" parent="Sections/RightSection/Status3/SubViewportContainer"]
+material = SubResource("ShaderMaterial_awxmc")
+layout_mode = 2
+texture = SubResource("ViewportTexture_ms6d0")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Border" type="TextureRect" parent="Sections/RightSection/Status3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3g2s5")
+expand_mode = 3
+
+[node name="DownSection" type="HBoxContainer" parent="Sections"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Timeline" type="Control" parent="Sections/DownSection"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Sections/DownSection/Timeline"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Sections/DownSection/Timeline"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 163.0
+offset_bottom = 49.0
+text = "TIMELINE"
+
+[node name="Icon" type="Control" parent="Sections/DownSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Sections/DownSection/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_otavp")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5m6qabxnpy8o"]
+
+[ext_resource type="PackedScene" uid="uid://dh27ess4jitii" path="res://fmv_videos/base_fmv_video.tscn" id="1_xg0o3"]
+[ext_resource type="VideoStream" uid="uid://br6cwvcdali6f" path="res://fmv_videos/sequences/credits.ogv" id="2_a4d4n"]
+
+[node name="CreditsVideo" instance=ExtResource("1_xg0o3")]
+V_NextSceneAuto = true
+V_NextScenePath = "res://fmv_videos/collection/second_test_video.tscn"
+V_RevealFullInterface = true
+
+[node name="VideoStreamPlayer" parent="." index="0"]
+stream = ExtResource("2_a4d4n")
+volume_db = -10.0
+
+[node name="Button" parent="Buttons" index="0"]
+visible = false
+disabled = true
+
+[node name="Label" type="Label" parent="." index="2"]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 480.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Ce sont les credits du jeu.
+Ce n'est pas une blague."
+autowrap_mode = 3
