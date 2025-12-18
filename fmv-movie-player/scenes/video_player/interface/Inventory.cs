@@ -21,7 +21,7 @@ public partial class Inventory : Control
 
     public void F_AddItem(string V_ItemName, string V_IconPath = "icon.svg")
     {
-        if (V_TotalItemCount + 1 <= V_MaxInventorySize)
+        if (V_TotalItemCount + 1 <= V_MaxInventorySize && F_GetItem(V_ItemName) == -1)
         {
             int V_SpaceIndex = F_FindFreeAreaIndex();
 

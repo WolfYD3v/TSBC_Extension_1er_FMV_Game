@@ -67,7 +67,7 @@ public partial class VideoPlayer : Control
         return V_NewVector;
     }
 
-    public void F_SetFMVVideo(string V_NextVideoScenePath)
+    public void F_SetFMVVideo(PackedScene V_NextVideoScene)
     {
         if (N_FMVVideoLocation != null)
         {
@@ -76,8 +76,7 @@ public partial class VideoPlayer : Control
                 N_FMVVideoLocation.GetChildren()[0].QueueFree();
             }
 
-            var V_NewFMVVideo = GD.Load<PackedScene>(V_NextVideoScenePath);
-            BaseFMVVideo V_NewFMVVideoScene = V_NewFMVVideo.Instantiate() as BaseFMVVideo;
+            BaseFMVVideo V_NewFMVVideoScene = V_NextVideoScene.Instantiate() as BaseFMVVideo;
             N_FMVVideoLocation.AddChild(V_NewFMVVideoScene);
             V_NewFMVVideoScene.S_NextVideoScene += F_SetFMVVideo;
             GD.Print($"NEXT SCENE: {V_NewFMVVideoScene.Get("V_NextScenePath")}");

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://mbe2nf51lyrg"]
+
+[ext_resource type="Script" uid="uid://b8km2bnygimb3" path="res://fmv_videos/interactions/interaction_area/InteractionArea.cs" id="1_l0m05"]
+[ext_resource type="PackedScene" uid="uid://betjjgnqvc0qy" path="res://fmv_videos/interactions/interaction_action/interaction_action.tscn" id="2_to7aq"]
+
+[node name="InteractionArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_l0m05")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1102.0
+offset_bottom = -598.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+
+[node name="Action" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InteractionAction" parent="Action" instance=ExtResource("2_to7aq")]
+layout_mode = 1

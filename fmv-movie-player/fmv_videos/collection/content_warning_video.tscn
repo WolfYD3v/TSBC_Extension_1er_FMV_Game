@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://br0mrcnha8v68"]
+[gd_scene load_steps=4 format=3 uid="uid://br0mrcnha8v68"]
 
 [ext_resource type="PackedScene" uid="uid://dh27ess4jitii" path="res://fmv_videos/base_fmv_video.tscn" id="1_pqsws"]
 [ext_resource type="VideoStream" uid="uid://dlt6h0urx6l7k" path="res://film/content_warning.ogv" id="2_4jwp2"]
+[ext_resource type="PackedScene" uid="uid://bxtg185nspj7u" path="res://fmv_videos/collection/terminal_scene.tscn" id="2_206cs"]
 
 [node name="ContentWarningFMVVideo" instance=ExtResource("1_pqsws")]
-V_NextScenePath = "res://fmv_videos/collection/terminal_scene.tscn"
+V_NextScene = ExtResource("2_206cs")
 V_WaitForEnableButton = true
 
 [node name="VideoStreamPlayer" parent="." index="0"]

@@ -4,13 +4,13 @@ using System;
 public partial class BaseFMVVideo : Control
 {
     [Signal]
-    public delegate void S_NextVideoSceneEventHandler(string V_NextVideoScenePath);
+    public delegate void S_NextVideoSceneEventHandler(PackedScene V_NextVideoScene);
 
     [ExportCategory("Next Video Scene Transition")]
     [Export]
     bool V_NextSceneAuto = true;
     [Export]
-    string V_NextScenePath = "";
+    PackedScene V_NextScene = null;
     [ExportCategory("Waiting Time on Skip Button")]
     [Export]
     bool V_WaitForEnableButton = false;
@@ -53,10 +53,18 @@ public partial class BaseFMVVideo : Control
         }
     }
 
-    public void F_NextVideoScene()
+    public void F_NextVideoScene(PackedScene V_OverrideVideoScene = null)
     {
+        if (V_OverrideVideoScene != null)
+        {
+            V_NextScene = V_OverrideVideoScene;
+        }
+
         N_ButonClickedAudioStreamPlayer.Play();
-        EmitSignal(SignalName.S_NextVideoScene, V_NextScenePath);
+        if (V_NextScene != null)
+        {
+            EmitSignal(SignalName.S_NextVideoScene, V_NextScene);
+        }
     }
 
     public void F_VideoSceneFinished()

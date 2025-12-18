@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1jah6t30ayln"]
+
+[ext_resource type="PackedScene" uid="uid://dh27ess4jitii" path="res://fmv_videos/base_fmv_video.tscn" id="1_wftq7"]
+[ext_resource type="PackedScene" uid="uid://c5m6qabxnpy8o" path="res://fmv_videos/collection/credits_video.tscn" id="2_65gf1"]
+
+[node name="CreditsVideo" instance=ExtResource("1_wftq7")]
+V_NextSceneAuto = true
+V_NextScene = ExtResource("2_65gf1")
+V_RevealFullInterface = true
+
+[node name="VideoStreamPlayer" parent="." index="0"]
+volume_db = -10.0
+
+[node name="Button" parent="Buttons" index="0"]
+visible = false
+disabled = true
